@@ -2,7 +2,7 @@
 
 int **make(int rows, int cols);
 void output(const int *const *mtx);
-void rm(int **mtx);
+void rm(int **mtx, int rows);
 
 int main() {
   int rows = 0, cols = 0;
@@ -14,4 +14,10 @@ int main() {
   mtx = make(rows, cols);
   output(mtx);
   rm(mtx);
+}
+void rm(int **mtx, int rows) {
+  for (size_t i = 0; i < rows; ++i) {
+    delete[] mtx[i];
+  }
+  delete[] mtx;
 }
